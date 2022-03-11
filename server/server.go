@@ -23,7 +23,7 @@ func (s *testApiServer) Echo(ctx context.Context, req *pb.ResponseRequest) (*pb.
 
 func main() {
 
-	lis, err := net.Listen("tcp", "localhost:8000")
+	lis, err := net.Listen("tcp", "localhost:8080")
 	if err != nil {
 		log.Fatalln(err)
 	}
