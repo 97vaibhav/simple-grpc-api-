@@ -18,7 +18,10 @@ func (s *testApiServer) GetUser(ctx context.Context, req *pb.UserRequest) (*pb.U
 }
 
 func (s *testApiServer) Echo(ctx context.Context, req *pb.ResponseRequest) (*pb.ResponseRequest, error) {
-	return req, nil
+
+	result := req.GetNsg()
+	return &pb.ResponseRequest{Nsg: result}, nil
+
 }
 
 func main() {
