@@ -7,6 +7,7 @@ import (
 	pb "simple-api/gen/proto"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 type testApiServer struct {
@@ -28,6 +29,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	grpcServer := grpc.NewServer()
+	reflection.Register(grpcServer)
 	pb.RegisterTestApiServer(grpcServer, &testApiServer{})
 	grpcServer.Serve(lis)
 	if err != nil {
